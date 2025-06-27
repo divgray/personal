@@ -23,6 +23,10 @@ header {
     color: white;
 }
 
+.menu {
+    padding: .5rem .6rem;
+}
+
 .menu::before {
     content: "☰";
 }
@@ -33,12 +37,14 @@ header {
 
 nav {
     display: none;
+
 }
 
 .nav.open {
     display: flex;
     justify-content: space-around;
     font-family: "Prompt", sans-serif;
+    padding: .5rem 0;
 }
 
 nav li {

@@ -1,0 +1,55 @@
+header {
+    background-color: #1a1a2e;
+    /* dark navy as backup */
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/starrynight.webp");
+
+    /* Make it cover the whole area */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Fix font name and quotes */
+    font-family: "Montserrat", sans-serif;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    font-family: "Monyserrat", sans-serif;
+    color: white;
+}
+
+.menu::before {
+    content: "☰";
+}
+
+.menu.open::before {
+    content: "✖";
+}
+
+nav {
+    display: none;
+}
+
+.nav.open {
+    display: flex;
+    justify-content: space-around;
+    font-family: "Prompt", sans-serif;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.active {
+    font-weight: bold;
+}

@@ -1,0 +1,27 @@
+:root,
+body {
+    overflow-x: hidden;
+    margin: auto;
+    padding: 0;
+    max-width: 1200px;
+}
+
+.hero {
+    display: block;
+}
+
+.hero img {
+    width: 100vw;
+    height: auto;
+}
+
+main {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/animated.webp");
+
+    /* Make it cover the whole area */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}

@@ -1,4 +1,6 @@
 header {
+    position: relative;
+
     background-color: black;
 
     /* background-image:
@@ -39,6 +41,8 @@ header span {
     background-color: rgb(50, 50, 50);
     border-radius: 10px;
     box-shadow: rgb(255, 255, 255, .8) 3px 3px;
+
+    cursor: pointer;
 }
 
 .menu::before {
@@ -50,13 +54,28 @@ header span {
 }
 
 nav {
-    display: none;
+    /* display: none; */
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: scaleY(0);
+    transition: transform .3s ease-out;
+}
 
+nav.open {
+    transform: scaleY(1);
+    /* scaleX for left to right unfolding */
 }
 
 .nav.open {
-    border-top: 5px double rgb(50, 50, 50);
-    border-bottom: 5px double rgb(50, 50, 50);
+    border-radius: 10px;
+    border: 5px double rgb(50, 50, 50);
     display: flex;
     justify-content: space-around;
     font-family: "Prompt", sans-serif;

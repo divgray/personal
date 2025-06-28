@@ -16,12 +16,10 @@ body {
 }
 
 main {
-    background-image:
+    /* background-image:
         linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/animated.webp");
-
-    /* Make it cover the whole area */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-
+    background-repeat: no-repeat; */
+    min-height: 500px;
 }

@@ -65,7 +65,8 @@ nav {
     overflow: hidden;
     transform-origin: top center;
     transform: scaleY(0);
-    transition: transform .3s ease-out;
+    transition: transform .5s ease-out;
+    z-index: 1000;
 }
 
 nav.open {

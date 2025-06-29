@@ -6,20 +6,56 @@ body {
     max-width: 1200px;
 }
 
-.hero {
-    display: block;
-}
-
-.hero img {
-    width: 100vw;
-    height: auto;
-}
-
 main {
-    /* background-image:
-        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/animated.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
     min-height: 500px;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 16px rgba(255, 255, 255, 1);
+    }
+
+    100% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+}
+
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+    color: white;
+}
+
+.hero-content img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 255, 255, .5);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    animation: glowPulse 1.5s ease-in-out infinite;
+}
+
+.background-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: brightness(0.6);
+    z-index: 1;
 }

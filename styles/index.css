@@ -1,5 +1,6 @@
 :root,
 body {
+    --shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     overflow-x: hidden;
     margin: auto;
     padding: 0;
@@ -43,11 +44,16 @@ main {
     color: white;
 }
 
+h1 {
+    font-size: 1rem;
+    font-family: "Prompt", sans-serif;
+}
+
 .hero-content img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 1px solid rgb(255, 255, 255, .5);
+    border: 1.5px solid rgb(255, 255, 255, .5);
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     animation: glowPulse 1.5s ease-in-out infinite;
 }
@@ -59,3 +65,4 @@ main {
     filter: brightness(0.6);
     z-index: 1;
 }
+

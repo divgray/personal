@@ -10,21 +10,26 @@ body {
 header {
     position: relative;
     background-color: black;
+    font-family: "Montserrat", sans-serif;
+}
+
+header span {
+    font-size: 1.4rem;
 }
 
 .heading {
     display: flex;
     justify-content: space-between;
     padding: .5rem;
-    font-size: 1.5rem;
-    font-family: "Montserrat", sans-serif;
     align-items: center;
+    font-family: "Monyserrat", sans-serif;
     color: white;
 }
 
 .heading img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 }
 
 .menu {
@@ -46,41 +51,67 @@ header {
     content: "✖";
 }
 
-/* 1) INITIAL STATE: nav is “collapsed” via scaleY(0) */
 nav {
-    font-family: "Prompt", sans-serif;
-    font-size: 1rem;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
     position: absolute;
-    /* remove from normal flow */
-    top: 100%;
-    /* sit immediately below the header */
-    left: 0;
-    right: 0;
+    width: 100%;
+    height: auto;
+    /* overflow: hidden; */
     transform-origin: top center;
     transform: scaleY(0);
     transition: transform .5s ease-out;
-    overflow: hidden;
-    /* cut off the folded content */
-    background-color: black;
-    /* match header */
-    /* optional styling when open */
-    border-radius: 10px;
-    z-index: 10;
-    padding: .5rem 0;
-    display: flex;
-    justify-content: space-around;
+    z-index: 1000;
 }
 
-/* 2) OPEN STATE: nav scales up to full height */
 nav.open {
     transform: scaleY(1);
-    border: 5px double gray;
-    display: flex;
-    justify-content: space-around;
-    /* only shown once open */
+    /* scaleX for left to right unfolding */
 }
 
-/* 3) keep your link styles as-is */
+.nav.open {
+    border-radius: 10px;
+    border: 5px double rgb(50, 50, 50);
+    display: flex;
+    justify-content: space-around;
+    font-family: "Prompt", sans-serif;
+    padding: .5rem 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.active {
+    font-weight: bold;
+}
+
+/* " my personal attempt" */
+nav {
+    display: none;
+}
+
+.nav {
+    display: none;
+}
+
+.open.nav {
+    display: flex;
+    justify-content: space-around;
+    border: 5px double gray;
+    border-radius: 10px;
+    padding: .5rem 0;
+
+}
+
+
 nav li {
     list-style: none;
 }
@@ -88,4 +119,5 @@ nav li {
 nav a {
     color: white;
     text-decoration: none;
+
 }

@@ -7,13 +7,16 @@
     <title>FED Program About ME</title>
 
     <link rel="shortcut icon" href="images/night.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/me.css">
 </head>
 
 <body>
     <header>
-        <h1>Divya Ali Priya Giray</h1>
-        <p>Front-End Developer Explorer</p>
+        <div class="heading">
+            <h1>Divya Ali Priya Giray</h1>
+            <p>Front-End Developer Explorer</p>
 
+        </div>
         <nav>
             <ul>
                 <li><a href="aboutME.html" class="active">About</a></li>
@@ -23,17 +26,14 @@
             </ul>
         </nav>
 
-        <figure>
-            <img src="images/night.ico" alt="DG logo">
-            <figcaption>DG logo</figcaption>
-        </figure>
+        <img src="images/night.ico" alt="DG logo">
 
     </header>
     <main>
-        <div>
+        <div class="hello">
             <figure>
                 <img src="images/profile.jpg" alt="A picture">
-                <figcaption>It's me :)</figcaption>
+                <figcaption>Hello! It's me :)</figcaption>
             </figure>
 
         </div>
@@ -61,7 +61,7 @@
         </section>
 
         <section class="contact">
-            <h2>Contact Me</h2>
+            <h2>Contact Me: </h2>
             <form action="contact-form" method="post">
                 <fieldset>
                     <legend>Send a Form and Ill get in touch with you!</legend>
@@ -85,5 +85,9 @@
     </main>
 
 </body>
+<footer>
+    <p>&copy; <span id="currentyear"></span> ⚜ Divya Ali Priya Giray ⚜ Rizal, Philippines</p>
+    <p id="lastModified"></p>
+</footer>
 
 </html>

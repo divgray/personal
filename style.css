@@ -1,0 +1,51 @@
+@keyframes colorshift {
+    0% {
+        background-color: white;
+    }
+
+    25% {
+        background-color: #f59e0b;
+    }
+
+    50% {
+        background-color: #22c55e;
+    }
+
+    75% {
+        background-color: #3b82f6;
+    }
+
+    100% {
+        background-color: #a855f7;
+    }
+}
+
+/* @keyframes colorshift {
+    0% {
+        background-color: white;
+    }
+
+    25% {
+        background-color:
+            #f59e0b;
+    }
+
+    50% {
+        background-color:
+            #22c55e;
+    }
+
+    75% {
+        background-color:
+            #3b82f6;
+    }
+
+    100% {
+        background-color: #a855f7;
+    }
+} */
+
+/* .min-h-screen {
+    width: 50px;
+    height: 10px;
+} */

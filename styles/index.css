@@ -4,7 +4,8 @@ body {
     overflow-x: hidden;
     margin: auto;
     padding: 0;
-    max-width: 1200px;
+    max-width: 1000px;
+    background-color: black;
 }
 
 main {
@@ -65,4 +66,3 @@ h1 {
     filter: brightness(0.6);
     z-index: 1;
 }
-

@@ -4,7 +4,7 @@ body {
     overflow-x: hidden;
     margin: auto;
     padding: 0;
-    max-width: 1200px;
+    max-width: 800px;
 }
 
 header {
@@ -34,7 +34,6 @@ header {
     background-color: rgb(50, 50, 50);
     border-radius: 10px;
     box-shadow: rgb(255, 255, 255, .8) 3px 3px;
-
     cursor: pointer;
 }
 
@@ -48,6 +47,7 @@ header {
 
 /* 1) INITIAL STATE: nav is “collapsed” via scaleY(0) */
 nav {
+    text-align: center;
     font-family: "Prompt", sans-serif;
     font-size: 1rem;
     position: absolute;
@@ -69,6 +69,8 @@ nav {
     padding: .5rem 0;
     display: flex;
     justify-content: space-around;
+    border: 5px double gray;
+    height: 1.5rem;
 }
 
 /* 2) OPEN STATE: nav scales up to full height */
@@ -80,6 +82,7 @@ nav.open {
     /* only shown once open */
 }
 
+
 /* 3) keep your link styles as-is */
 nav li {
     list-style: none;
@@ -88,4 +91,22 @@ nav li {
 nav a {
     color: white;
     text-decoration: none;
+}
+
+nav.open a:hover {
+    font-size: 1.2rem;
+    text-decoration: underline;
+    font-family: "Prompt", sans-serif;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+@media (min-width:800px) {
+    .menu {
+        display: none;
+    }
+
+    .nav {
+        background-color: aliceblue;
+    }
 }

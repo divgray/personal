@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Butterfly</title>
+    <style>
+        :root {
+            --butterfly-size: 120px;
+            --wing-color-1: #ff7eb3;
+            --wing-color-2: #ffd86b;
+            --body-color: #3b3b3b;
+            --shadow: rgba(0, 0, 0, 0.12);
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(180deg, #b3ecff 0%, #f9b8ff 50%, #fccdfa 60%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Scene wrapper that moves the whole butterfly along a path */
+        .scene {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            pointer-events: none;
+        }
+
+        /* Flight path animation: moves across screen with slight bobbing and rotation */
+        @keyframes flight {
+            0% {
+                transform: translate(-20vw, 10vh) rotate(-10deg) scale(0.9);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            25% {
+                transform: translate(10vw, 20vh) rotate(5deg) scale(1);
+            }
+
+            50% {
+                transform: translate(40vw, 30vh) rotate(-8deg) scale(1.05);
+            }
+
+            75% {
+                transform: translate(70vw, 18vh) rotate(6deg) scale(0.95);
+            }
+
+            100% {
+                transform: translate(110vw, 25vh) rotate(12deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* The butterfly container */
+        .butterfly {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: var(--butterfly-size);
+            height: calc(var(--butterfly-size) * 0.9);
+            transform-origin: center;
+            animation: flight 10s linear infinite;
+            filter: drop-shadow(0 6px 10px var(--shadow));
+        }
+
+        /* Body */
+        .body {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: calc(var(--butterfly-size) * 0.12);
+            height: calc(var(--butterfly-size) * 0.6);
+            background: linear-gradient(180deg, #222 0%, var(--body-color) 100%);
+            border-radius: 50px;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+
+        /* Antennae */
+        .antenna {
+            position: absolute;
+            width: 2px;
+            height: calc(var(--butterfly-size) * 0.28);
+            background: transparent;
+            top: calc(50% - var(--butterfly-size) * 0.45);
+            left: 50%;
+            transform-origin: bottom center;
+            z-index: 4;
+        }
+
+        .antenna::before,
+        .antenna::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, #222, #444);
+            transform-origin: bottom center;
+            border-radius: 2px;
+        }
+
+        .antenna::before {
+            transform: translateX(-10px) rotate(-25deg);
+            left: 0;
+        }
+
+        .antenna::after {
+            transform: translateX(10px) rotate(25deg);
+            left: 0;
+        }
+
+        /* Wing base shared styles */
+        .wing {
+            position: absolute;
+            width: calc(var(--butterfly-size) * 0.9);
+            height: calc(var(--butterfly-size) * 0.9);
+            top: 50%;
+            transform-origin: 20% 50%;
+            border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Left wings */
+        .wing.left {
+            left: 10%;
+            transform-origin: 80% 50%;
+            z-index: 2;
+        }
+
+        .wing.left .upper {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25) 0 8%, transparent 9%),
+                linear-gradient(135deg, var(--wing-color-1) 0%, var(--wing-color-2) 100%);
+            clip-path: ellipse(60% 70% at 30% 35%);
+        }
+
+        .wing.left .lower {
+            background: linear-gradient(135deg, var(--wing-color-2) 0%, #ffb3d6 100%);
+            clip-path: ellipse(55% 60% at 40% 70%);
+            top: 45%;
+        }
+
+        /* Right wings */
+        .wing.right {
+            right: 10%;
+            transform-origin: 20% 50%;
+            z-index: 2;
+        }
+
+        .wing.right .upper {
+            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.25) 0 8%, transparent 9%),
+                linear-gradient(45deg, var(--wing-color-1) 0%, var(--wing-color-2) 100%);
+            clip-path: ellipse(60% 70% at 70% 35%);
+        }
+
+        .wing.right .lower {
+            background: linear-gradient(45deg, var(--wing-color-2) 0%, #ffb3d6 100%);
+            clip-path: ellipse(55% 60% at 60% 70%);
+            top: 45%;
+        }
+
+        /* Upper and lower wing pieces */
+        .wing .upper,
+        .wing .lower {
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            left: 0;
+            top: 0;
+            border-radius: inherit;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08) inset;
+        }
+
+        .wing .lower {
+            top: 40%;
+            opacity: 0.95;
+        }
+
+        /* Wing flap animations */
+        @keyframes flap-left {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-28deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            75% {
+                transform: rotate(-18deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes flap-right {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(28deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            75% {
+                transform: rotate(18deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Apply animations with slight phase difference for natural motion */
+        .wing.left {
+            animation: flap-left 0.45s ease-in-out infinite;
+            transform-origin: 80% 50%;
+        }
+
+        .wing.right {
+            animation: flap-right 0.45s ease-in-out infinite;
+            transform-origin: 20% 50%;
+        }
+
+        /* Small decorative spots on wings */
+        .spot {
+            position: absolute;
+            width: 10%;
+            height: 10%;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            filter: blur(0.4px);
+            opacity: 0.9;
+        }
+
+        .left .spot.s1 {
+            left: 18%;
+            top: 18%;
+            transform: scale(1.1);
+        }
+
+        .left .spot.s2 {
+            left: 30%;
+            top: 40%;
+            transform: scale(0.9);
+        }
+
+        .right .spot.s1 {
+            right: 18%;
+            top: 18%;
+            transform: scale(1.1);
+        }
+
+        .right .spot.s2 {
+            right: 30%;
+            top: 40%;
+            transform: scale(0.9);
+        }
+
+        /* Make it responsive: reduce size on small screens */
+        @media (max-width:520px) {
+            :root {
+                --butterfly-size: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scene" aria-hidden="true">
+        <div class="butterfly" role="img" aria-label="Animated butterfly">
+            <div class="wing left">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                <div class="spot s1"></div>
+                <div class="spot s2"></div>
+            </div>
+
+            <div class="body"></div>
+
+            <div class="antenna" aria-hidden="true"></div>
+
+            <div class="wing right">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                <div class="spot s1"></div>
+                <div class="spot s2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
